@@ -1,19 +1,14 @@
 package com.alas.balet;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -39,7 +34,17 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
+        final Button btnSendLocation = findViewById(R.id.btnSendLocation);
+
+
+        btnSendLocation.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Mandar: "+latitude+" ,"+longitude, Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -97,6 +102,5 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
 
         }
     }
-
 
 }
