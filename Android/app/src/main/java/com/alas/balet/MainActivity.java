@@ -4,9 +4,13 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -24,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
     private GoogleMap mMap;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private FusedLocationProviderClient mFusedLocationClient;
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle toggleBar;
+    private NavigationView navigationView;
     private double latitude;
     private double longitude;
 
@@ -36,16 +43,51 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
         mapFragment.getMapAsync(this);
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        drawerLayout = findViewById(R.id.activity_main);
+        toggleBar = new ActionBarDrawerToggle(this, drawerLayout,R.string.Open, R.string.Close);
+
+        drawerLayout.addDrawerListener(toggleBar);
+        toggleBar.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final Button btnSendLocation = findViewById(R.id.btnSendLocation);
 
+        navigationView = findViewById(R.id.nv);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch(id)
+                {
+                    case R.id.account:
+                        Toast.makeText(MainActivity.this, "My Account",Toast.LENGTH_SHORT).show();
+                    case R.id.settings:
+                        Toast.makeText(MainActivity.this, "Settings",Toast.LENGTH_SHORT).show();
+                    case R.id.mycart:
+                        Toast.makeText(MainActivity.this, "My Cart",Toast.LENGTH_SHORT).show();
+                    default:
+                        return true;
+                }
+            }
+        });
 
         btnSendLocation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Mandar: "+latitude+" ,"+longitude, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Pass the event to ActionBarDrawerToggle, if it returns
+        // true, then it has handled the app icon touch event
+        if (toggleBar.onOptionsItemSelected(item)) {
+            return true;
+        }
+        // Handle your other action bar items...
 
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
