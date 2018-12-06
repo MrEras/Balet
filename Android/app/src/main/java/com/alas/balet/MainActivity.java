@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,7 +50,10 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
         drawerLayout.addDrawerListener(toggleBar);
         toggleBar.syncState();
 
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.nav_bar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         final Button btnSendLocation = findViewById(R.id.btnSendLocation);
 
@@ -61,14 +65,18 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
                 switch(id)
                 {
                     case R.id.account:
-                        Toast.makeText(MainActivity.this, "My Account",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "account",Toast.LENGTH_SHORT).show();
+                        break;
                     case R.id.settings:
                         Toast.makeText(MainActivity.this, "Settings",Toast.LENGTH_SHORT).show();
+                        break;
                     case R.id.mycart:
                         Toast.makeText(MainActivity.this, "My Cart",Toast.LENGTH_SHORT).show();
+                        break;
                     default:
                         return true;
                 }
+                return true;
             }
         });
 
@@ -80,13 +88,9 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Pass the event to ActionBarDrawerToggle, if it returns
-        // true, then it has handled the app icon touch event
         if (toggleBar.onOptionsItemSelected(item)) {
             return true;
         }
-        // Handle your other action bar items...
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -96,7 +100,6 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
         askForLocationPermission();
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
         mMap.setOnMyLocationButtonClickListener(this);
-
     }
 
     @Override
