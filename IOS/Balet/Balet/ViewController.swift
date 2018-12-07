@@ -9,7 +9,7 @@ import UIKit
 //import Firebase
 import MapKit
 import CoreLocation
-
+///COMENTARIO PENDEJO COMO EL ERASMO
 class ViewController: UIViewController {
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var addrlocation: UILabel!
