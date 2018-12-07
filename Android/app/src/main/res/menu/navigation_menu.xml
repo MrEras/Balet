@@ -2,10 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/account"
-        android:title="My Account"/>
-    <item android:id="@+id/settings"
-        android:title="Settings"/>
-    <item android:id="@+id/mycart"
-        android:title="My Cart"/>
+        android:icon="@drawable/baseline_account_box_24"
+        android:title="Mi cuenta"/>
+    <item android:id="@+id/drivers"
+        android:icon="@drawable/baseline_people_outline_24"
+        android:title="Choferes"/>
+    <item android:id="@+id/payment"
+        android:icon="@drawable/baseline_payment_24"
+        android:title="Pagos"/>
+    <item android:id="@+id/historial"
+        android:icon="@drawable/baseline_time_to_leave_24"
+        android:title="Historial"/>
+    <item android:id="@+id/legal"
+        android:icon="@drawable/baseline_work_24"
+        android:title="Legal"/>
 
 </menu>

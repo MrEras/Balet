@@ -65,13 +65,19 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
                 switch(id)
                 {
                     case R.id.account:
-                        Toast.makeText(MainActivity.this, "account",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Mi cuenta",Toast.LENGTH_SHORT).show();
                         break;
-                    case R.id.settings:
-                        Toast.makeText(MainActivity.this, "Settings",Toast.LENGTH_SHORT).show();
+                    case R.id.drivers:
+                        Toast.makeText(MainActivity.this, "Choferes",Toast.LENGTH_SHORT).show();
                         break;
-                    case R.id.mycart:
-                        Toast.makeText(MainActivity.this, "My Cart",Toast.LENGTH_SHORT).show();
+                    case R.id.payment:
+                        Toast.makeText(MainActivity.this, "Pagos",Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.historial:
+                        Toast.makeText(MainActivity.this, "Historial",Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.legal:
+                        Toast.makeText(MainActivity.this, "Legal",Toast.LENGTH_SHORT).show();
                         break;
                     default:
                         return true;
