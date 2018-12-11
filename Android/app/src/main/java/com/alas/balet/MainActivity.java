@@ -2,6 +2,9 @@ package com.alas.balet;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -22,7 +25,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLocationButtonClickListener, OnMapReadyCallback {
@@ -106,6 +112,14 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
         askForLocationPermission();
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
         mMap.setOnMyLocationButtonClickListener(this);
+
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng point) {
+                mMap.clear();
+                mMap.addMarker(new MarkerOptions().position(point));
+            }
+        });
     }
 
     @Override
@@ -131,6 +145,17 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
                                 latitude = location.getLatitude();
                                 longitude = location.getLongitude();
                                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 15));
+
+                                Drawable circleDrawable = getResources().getDrawable(R.drawable.baseline_location_on_24);
+                                BitmapDescriptor markerIcon = getMarkerIconFromDrawable(circleDrawable);
+                                //mMap.addMarker(new MarkerOptions()
+                                      //  .position(new LatLng(latitude, longitude))
+                                    //    .title("My Marker")
+                                  //      .icon(markerIcon)
+                                //);
+//                                mMap.addMarker(new MarkerOptions()
+//                                        .position(new LatLng(latitude,longitude))
+//                                        .draggable(true));
                             }
                         }
                     });
@@ -152,6 +177,14 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
             }
 
         }
+    }
+    private BitmapDescriptor getMarkerIconFromDrawable(Drawable drawable) {
+        Canvas canvas = new Canvas();
+        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        canvas.setBitmap(bitmap);
+        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+        drawable.draw(canvas);
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
     }
 
 }
