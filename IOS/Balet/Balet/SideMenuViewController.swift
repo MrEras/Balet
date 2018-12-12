@@ -40,3 +40,12 @@ class SideMenuViewController: UIViewController {
         });
     }
 }
+class RoundedImageView: UIImageView {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.layer.cornerRadius = self.frame.size.width/2
+        self.layer.borderColor = UIColor.white.cgColor
+        self.layer.borderWidth = 2
+        self.layer.masksToBounds = true
+    }
+}
