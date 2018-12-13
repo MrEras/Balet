@@ -1,9 +1,12 @@
 package com.alas.balet;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.support.annotation.NonNull;
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggleBar;
     private NavigationView navigationView;
+    private Dialog locationDialog;
     private double latitude;
     private double longitude;
 
@@ -62,6 +66,18 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMyLoc
 
 
         final Button btnSendLocation = findViewById(R.id.btnSendLocation);
+        locationDialog = new Dialog(this);
+        locationDialog.setContentView(R.layout.location_dialog);
+        final Button btnUnderstood = locationDialog.findViewById(R.id.btnUnderstood);
+
+        locationDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        locationDialog.show();
+
+        btnUnderstood.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                locationDialog.dismiss();
+            }
+        });
 
         navigationView = findViewById(R.id.nv);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
