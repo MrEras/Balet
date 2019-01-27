@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "636103138316",
+    "firebase_url": "https://balet-99d30.firebaseio.com",
+    "project_id": "balet-99d30",
+    "storage_bucket": "balet-99d30.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636103138316:android:49be00121a88d764",
+        "android_client_info": {
+          "package_name": "com.alas.balet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "636103138316-7k7cnsaq4kjlsqscfi6pne0jqcf60qn7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB__7XXCSlgPXfzJKFd-_9y9goPmSD7LJo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -11,14 +11,16 @@ import android.widget.TextView;
 import com.alas.balet.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
 public class ParkingsAdapter extends ArrayAdapter<String> {
 
     private final Activity context;
-    private final String[] names;
+    private final List<String> names;
     private final String[] descriptions;
     private final String[] images;
 
-    public ParkingsAdapter(Activity context, String[] names, String[] images, String[] descriptions) {
+    public ParkingsAdapter(Activity context, List<String> names, String[] images, String[] descriptions) {
         super(context, R.layout.parking_list, names);
         // TODO Auto-generated constructor stub
 
@@ -38,7 +40,7 @@ public class ParkingsAdapter extends ArrayAdapter<String> {
         ImageView drivers_image = rowView.findViewById(R.id.drivers_image);
         TextView drivers_description = rowView.findViewById(R.id.drivers_description);
 
-        drivers_name.setText(names[position]);
+        drivers_name.setText(names.get(position));
         Picasso.get()
                 .load(images[position])
                 .into(drivers_image);

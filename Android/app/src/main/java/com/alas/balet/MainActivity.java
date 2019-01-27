@@ -1,36 +1,37 @@
 package com.alas.balet;
 
-import android.Manifest;
 import android.app.Dialog;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.alas.balet.com.alas.ListAdapters.ParkingsAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private DatabaseReference mDatabase;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggleBar;
     private NavigationView navigationView;
     private Dialog locationDialog;
     ListView list;
-    String[] names = {"Alejandro","Memo","Eras"};
-    String[] images = {"https://www.uwgb.edu/UWGBCMS/media/Maps/images/map-icon.jpg","https://www.uwgb.edu/UWGBCMS/media/Maps/images/map-icon.jpg","https://www.uwgb.edu/UWGBCMS/media/Maps/images/map-icon.jpg"};
-    String[] descriptions = {"Dios","Puto","Gay"};
+    String[] name = {"Alejandro","Memo","Eras"};
+    List<String> names = new ArrayList<>();;
+    String[] images = {"https://www.uwgb.edu/UWGBCMS/media/Maps/images/map-icon.jpg"};
+    String[] descriptions = {"Dios"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.activity_main);
         toggleBar = new ActionBarDrawerToggle(this, drawerLayout,R.string.Open, R.string.Close);
-
         drawerLayout.addDrawerListener(toggleBar);
         toggleBar.syncState();
 
@@ -47,6 +47,24 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.nav_bar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference reference = mDatabase.child("Parkings");
+
+        ValueEventListener postListener = new ValueEventListener(){
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    names.add(postSnapshot.child("Name").getValue().toString());
+                }
+
+            }
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+
+            }
+        };
+        reference.addListenerForSingleValueEvent(postListener);
+        names.add("alex");
         ParkingsAdapter adapter=new ParkingsAdapter(MainActivity.this, names, images,descriptions);
         list=(ListView)findViewById(R.id.list);
         list.setAdapter(adapter);
@@ -66,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
+        //Navigation and side menu
         navigationView = findViewById(R.id.nv);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
