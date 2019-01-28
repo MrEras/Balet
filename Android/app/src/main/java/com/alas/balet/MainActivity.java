@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import com.alas.balet.com.alas.ListAdapters.ParkingsAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
     private Dialog locationDialog;
     ListView list;
     String[] name = {"Alejandro","Memo","Eras"};
-    List<String> names = new ArrayList<>();;
+    List<String> names = new ArrayList<>();
+    //List<String> images = new ArrayList<>();
+    //List<String> descriptions = new ArrayList<>();
     String[] images = {"https://www.uwgb.edu/UWGBCMS/media/Maps/images/map-icon.jpg"};
     String[] descriptions = {"Dios"};
 
@@ -55,6 +58,16 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                     names.add(postSnapshot.child("Name").getValue().toString());
+                    //images.add(postSnapshot.child("Name").getValue().toString());
+                    //descriptions.add(postSnapshot.child("Name").getValue().toString());
+
+                    //HOLA ALEX, cambie el adaptador a aqui para que se muestre despues de leer cambio :O
+                    // y ya solo seria cmbiarle de array a List<String>  aqui y en  ParkingsAdapter las otras propiedades
+                    // o que?
+
+                    ParkingsAdapter adapter=new ParkingsAdapter(MainActivity.this, names, images,descriptions);
+                    list=(ListView)findViewById(R.id.list);
+                    list.setAdapter(adapter);
                 }
 
             }
@@ -63,11 +76,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
-        reference.addListenerForSingleValueEvent(postListener);
-        names.add("alex");
-        ParkingsAdapter adapter=new ParkingsAdapter(MainActivity.this, names, images,descriptions);
-        list=(ListView)findViewById(R.id.list);
-        list.setAdapter(adapter);
+        reference.addValueEventListener(postListener);//addListenerForSingleValueEvent
+        //names.add("alex");
+        //ParkingsAdapter adapter=new ParkingsAdapter(MainActivity.this, names, images,descriptions);
+        //list=(ListView)findViewById(R.id.list);
+        //list.setAdapter(adapter);
 
 
 

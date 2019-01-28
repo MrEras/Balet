@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17B86C363E1E5CA6D29C8C97 /* Pods_Balet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079646C4C0E1FFAC24597AA6 /* Pods_Balet.framework */; };
+		CC96EAA621FE7F0100E8DF75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC96EAA521FE7F0100E8DF75 /* GoogleService-Info.plist */; };
 		CC9E6EC221B055C70079C775 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9E6EC121B055C70079C775 /* AppDelegate.swift */; };
 		CC9E6EC421B055C70079C775 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9E6EC321B055C70079C775 /* ViewController.swift */; };
 		CC9E6EC721B055C70079C775 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC9E6EC521B055C70079C775 /* Main.storyboard */; };
 		CC9E6EC921B055CB0079C775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC9E6EC821B055CB0079C775 /* Assets.xcassets */; };
 		CC9E6ECC21B055CB0079C775 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC9E6ECA21B055CB0079C775 /* LaunchScreen.storyboard */; };
-		CCB9501A21B9DD3F004DC046 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB9501921B9DD3F004DC046 /* Annotation.swift */; };
 		CCB9501E21B9E517004DC046 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB9501D21B9E517004DC046 /* SideMenuViewController.swift */; };
 		CCFF257121F65AAF0033636B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFF257021F65AAE0033636B /* Extensions.swift */; };
 		CCFF257321F66E7B0033636B /* Parking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFF257221F66E7B0033636B /* Parking.swift */; };
@@ -20,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		079646C4C0E1FFAC24597AA6 /* Pods_Balet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Balet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D2C4F46AB454047169EC813 /* Pods-Balet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Balet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Balet/Pods-Balet.debug.xcconfig"; sourceTree = "<group>"; };
+		CC96EAA521FE7F0100E8DF75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CC9E6EBE21B055C70079C775 /* Balet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Balet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC9E6EC121B055C70079C775 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC9E6EC321B055C70079C775 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,11 +31,11 @@
 		CC9E6EC821B055CB0079C775 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC9E6ECB21B055CB0079C775 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC9E6ECD21B055CB0079C775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CCB9501921B9DD3F004DC046 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		CCB9501D21B9E517004DC046 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		CCFF257021F65AAE0033636B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CCFF257221F66E7B0033636B /* Parking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parking.swift; sourceTree = "<group>"; };
 		CCFF257421F687620033636B /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		F169326AF47CFD21BE7C5B62 /* Pods-Balet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Balet.release.xcconfig"; path = "Pods/Target Support Files/Pods-Balet/Pods-Balet.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +43,75 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17B86C363E1E5CA6D29C8C97 /* Pods_Balet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56F0E62F17371FFDBCF0547A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9D2C4F46AB454047169EC813 /* Pods-Balet.debug.xcconfig */,
+				F169326AF47CFD21BE7C5B62 /* Pods-Balet.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8B8F4C95CB74EA75D5B21344 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				079646C4C0E1FFAC24597AA6 /* Pods_Balet.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CC96EAA721FE804100E8DF75 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CC9E6EC821B055CB0079C775 /* Assets.xcassets */,
+				CC9E6ECD21B055CB0079C775 /* Info.plist */,
+				CC96EAA521FE7F0100E8DF75 /* GoogleService-Info.plist */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		CC96EAA821FE805400E8DF75 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CC9E6EC521B055C70079C775 /* Main.storyboard */,
+				CC9E6ECA21B055CB0079C775 /* LaunchScreen.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		CC96EAA921FE806900E8DF75 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CC9E6EC121B055C70079C775 /* AppDelegate.swift */,
+				CCFF257021F65AAE0033636B /* Extensions.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		CC96EAAA21FE807800E8DF75 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CC9E6EC321B055C70079C775 /* ViewController.swift */,
+				CCFF257421F687620033636B /* DetailVC.swift */,
+				CCB9501D21B9E517004DC046 /* SideMenuViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		CC9E6EB521B055C70079C775 = {
 			isa = PBXGroup;
 			children = (
 				CC9E6EC021B055C70079C775 /* Balet */,
 				CC9E6EBF21B055C70079C775 /* Products */,
+				56F0E62F17371FFDBCF0547A /* Pods */,
+				8B8F4C95CB74EA75D5B21344 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,15 +127,10 @@
 			isa = PBXGroup;
 			children = (
 				CCB9501821B9DD16004DC046 /* Models */,
-				CC9E6EC121B055C70079C775 /* AppDelegate.swift */,
-				CCFF257021F65AAE0033636B /* Extensions.swift */,
-				CC9E6EC321B055C70079C775 /* ViewController.swift */,
-				CCFF257421F687620033636B /* DetailVC.swift */,
-				CCB9501D21B9E517004DC046 /* SideMenuViewController.swift */,
-				CC9E6EC521B055C70079C775 /* Main.storyboard */,
-				CC9E6EC821B055CB0079C775 /* Assets.xcassets */,
-				CC9E6ECA21B055CB0079C775 /* LaunchScreen.storyboard */,
-				CC9E6ECD21B055CB0079C775 /* Info.plist */,
+				CC96EAA921FE806900E8DF75 /* Utils */,
+				CC96EAAA21FE807800E8DF75 /* Controllers */,
+				CC96EAA821FE805400E8DF75 /* Views */,
+				CC96EAA721FE804100E8DF75 /* Services */,
 			);
 			path = Balet;
 			sourceTree = "<group>";
@@ -81,7 +138,6 @@
 		CCB9501821B9DD16004DC046 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CCB9501921B9DD3F004DC046 /* Annotation.swift */,
 				CCFF257221F66E7B0033636B /* Parking.swift */,
 			);
 			name = Models;
@@ -94,9 +150,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC9E6ED021B055CB0079C775 /* Build configuration list for PBXNativeTarget "Balet" */;
 			buildPhases = (
+				88037FE90E825DACA17A7926 /* [CP] Check Pods Manifest.lock */,
 				CC9E6EBA21B055C70079C775 /* Sources */,
 				CC9E6EBB21B055C70079C775 /* Frameworks */,
 				CC9E6EBC21B055C70079C775 /* Resources */,
+				1E49A1E19AB32B3048C85E4D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -146,12 +204,58 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC9E6ECC21B055CB0079C775 /* LaunchScreen.storyboard in Resources */,
+				CC96EAA621FE7F0100E8DF75 /* GoogleService-Info.plist in Resources */,
 				CC9E6EC921B055CB0079C775 /* Assets.xcassets in Resources */,
 				CC9E6EC721B055C70079C775 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1E49A1E19AB32B3048C85E4D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Balet/Pods-Balet-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Balet/Pods-Balet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		88037FE90E825DACA17A7926 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Balet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CC9E6EBA21B055C70079C775 /* Sources */ = {
@@ -160,7 +264,6 @@
 			files = (
 				CCFF257121F65AAF0033636B /* Extensions.swift in Sources */,
 				CC9E6EC421B055C70079C775 /* ViewController.swift in Sources */,
-				CCB9501A21B9DD3F004DC046 /* Annotation.swift in Sources */,
 				CC9E6EC221B055C70079C775 /* AppDelegate.swift in Sources */,
 				CCB9501E21B9E517004DC046 /* SideMenuViewController.swift in Sources */,
 				CCFF257321F66E7B0033636B /* Parking.swift in Sources */,
@@ -308,16 +411,14 @@
 		};
 		CC9E6ED121B055CB0079C775 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D2C4F46AB454047169EC813 /* Pods-Balet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8B83SN98VT;
 				INFOPLIST_FILE = Balet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mx.com.memoromoj.Balet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -327,16 +428,14 @@
 		};
 		CC9E6ED221B055CB0079C775 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F169326AF47CFD21BE7C5B62 /* Pods-Balet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8B83SN98VT;
 				INFOPLIST_FILE = Balet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mx.com.memoromoj.Balet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

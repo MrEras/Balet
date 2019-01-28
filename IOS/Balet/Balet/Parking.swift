@@ -25,7 +25,7 @@ class ParkingCell : UITableViewCell{
     
     func configureCell(_ park: Parking){
         imgView.downloadedFrom(link: park.URLImg!)
-        nameLab.text = "Nombre Est: " + park.name!
+        nameLab.text = park.name! // "Nombre Est: " + 
         descLab.text = "Descripción: " + park.description!
         dispLab.text = "Hay \(park.disp) lugares disponibles"
     }
