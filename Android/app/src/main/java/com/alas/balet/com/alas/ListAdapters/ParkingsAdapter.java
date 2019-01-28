@@ -17,7 +17,7 @@ public class ParkingsAdapter extends ArrayAdapter<String> {
 
     private final Activity context;
     private final List<String> names;
-    private final String[] descriptions;
+    private final String[] descriptions; //List<String> ?
     private final String[] images;
 
     public ParkingsAdapter(Activity context, List<String> names, String[] images, String[] descriptions) {

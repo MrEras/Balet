@@ -1,10 +1,11 @@
 import UIKit
-//import Firebase
+import Firebase
 
 class ViewController: UIViewController {
     
     @IBOutlet var parkyList: UITableView!
     // Dictionary ->  "Name":"Description"
+//    var cat1 = [Parking]()
     var cat1 = [
         Parking(webURL: "https://www.google.com/maps/about/images/mymaps/mymaps-desktop-16x9.png", name: "San Marcos 1", desc: "Justo frente al jardin ! O UNA DESCR chida",2)
     ]
@@ -23,12 +24,32 @@ class ViewController: UIViewController {
         self.view.addSubview(menuVC.view)
         menuVC.didMove(toParent: self)
     }
-    //    var ref: DatabaseReference!
+    var ref: DatabaseReference!
     override func viewDidLoad() {
         super.viewDidLoad()
         parkyList.delegate = self
         parkyList.dataSource = self
         parkyList.tableFooterView = UIView()
+        
+        ref = Database.database().reference(withPath: "Parkings")
+        ref.observe(DataEventType.value, with: { (snapshot) in
+            if snapshot.childrenCount > 0 {
+                
+                self.cat1.removeAll()
+                
+                for parkings in snapshot.children.allObjects as! [DataSnapshot] {
+                    let parkingObject = parkings.value as? [String: AnyObject]
+                    let pName  = parkingObject?["Name"] as! String
+//                    let pID  = parkingObject?["id"] as! String
+                    let pImage = parkingObject?["Image"] as! String
+                    let pDesc = parkingObject?["Description"] as! String
+                    
+                    self.cat1.append(Parking(webURL:pImage, name:pName, desc:pDesc,1))
+                }
+                
+                self.parkyList.reloadData()
+            }
+        })
     }
 }
 extension ViewController : UITableViewDataSource, UITableViewDelegate{

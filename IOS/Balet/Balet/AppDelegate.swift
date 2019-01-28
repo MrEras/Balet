@@ -1,5 +1,5 @@
 import UIKit
-//import Firebase
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -12,7 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UINavigationBar.appearance().backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 //        UINavigationBar.appearance().tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 //         #colorLiteral(red: 0.137, green: 0.73333333, blue: 0.82, alpha: 1)
-        // FirebaseApp.configure()
+        FirebaseApp.configure()
         return true
     }
     func applicationWillResignActive(_ application: UIApplication) {}
