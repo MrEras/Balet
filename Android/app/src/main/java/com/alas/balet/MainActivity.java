@@ -12,7 +12,8 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.alas.balet.com.alas.ListAdapters.ParkingsAdapter;
+import com.alas.balet.ListAdapters.ParkingsAdapter;
+import com.alas.balet.Objects.Parking;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle toggleBar;
     private NavigationView navigationView;
     private Dialog locationDialog;
+    List<Parking> parkings = new ArrayList<>();
     ListView list;
     String[] name = {"Alejandro","Memo","Eras"};
     List<String> names = new ArrayList<>();
-    //List<String> images = new ArrayList<>();
-    //List<String> descriptions = new ArrayList<>();
-    String[] images = {"https://www.uwgb.edu/UWGBCMS/media/Maps/images/map-icon.jpg"};
-    String[] descriptions = {"Dios"};
+    List<String> images = new ArrayList<>();
+    List<String> descriptions = new ArrayList<>();
+    List<Integer> ids = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,19 +54,24 @@ public class MainActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         DatabaseReference reference = mDatabase.child("Parkings");
 
+//        final ParkingsAdapter adapter=new ParkingsAdapter(MainActivity.this, names, images,descriptions);
+//        list=(ListView)findViewById(R.id.list);
+//        list.setAdapter(adapter);
+
         ValueEventListener postListener = new ValueEventListener(){
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    names.add(postSnapshot.child("Name").getValue().toString());
-                    //images.add(postSnapshot.child("Name").getValue().toString());
-                    //descriptions.add(postSnapshot.child("Name").getValue().toString());
 
-                    //HOLA ALEX, cambie el adaptador a aqui para que se muestre despues de leer cambio :O
-                    // y ya solo seria cmbiarle de array a List<String>  aqui y en  ParkingsAdapter las otras propiedades
-                    // o que?
+                    Parking parking = new Parking();
+                    parking.setId(Integer.parseInt(postSnapshot.child("id").getValue().toString()));
+                    parking.setName(postSnapshot.child("name").getValue().toString());
+                    parking.setDescription(postSnapshot.child("description").getValue().toString());
+                    parking.setPrice(Integer.parseInt(postSnapshot.child("price").getValue().toString()));
+                    parkings.add(parking);
 
-                    ParkingsAdapter adapter=new ParkingsAdapter(MainActivity.this, names, images,descriptions);
+
+                    ParkingsAdapter adapter=new ParkingsAdapter(MainActivity.this, parkings);
                     list=(ListView)findViewById(R.id.list);
                     list.setAdapter(adapter);
                 }
@@ -78,9 +84,7 @@ public class MainActivity extends AppCompatActivity {
         };
         reference.addValueEventListener(postListener);//addListenerForSingleValueEvent
         //names.add("alex");
-        //ParkingsAdapter adapter=new ParkingsAdapter(MainActivity.this, names, images,descriptions);
-        //list=(ListView)findViewById(R.id.list);
-        //list.setAdapter(adapter);
+
 
 
 
@@ -128,6 +132,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (toggleBar.onOptionsItemSelected(item)) {

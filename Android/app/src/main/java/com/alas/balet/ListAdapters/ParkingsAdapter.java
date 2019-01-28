@@ -1,4 +1,4 @@
-package com.alas.balet.com.alas.ListAdapters;
+package com.alas.balet.ListAdapters;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -8,26 +8,22 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alas.balet.Objects.Parking;
 import com.alas.balet.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class ParkingsAdapter extends ArrayAdapter<String> {
+public class ParkingsAdapter extends ArrayAdapter<Parking> {
 
     private final Activity context;
-    private final List<String> names;
-    private final String[] descriptions; //List<String> ?
-    private final String[] images;
+    private final List<Parking> parkings;
 
-    public ParkingsAdapter(Activity context, List<String> names, String[] images, String[] descriptions) {
-        super(context, R.layout.parking_list, names);
+    public ParkingsAdapter(Activity context,List<Parking> parkings) {
+        super(context, R.layout.parking_list, parkings);
         // TODO Auto-generated constructor stub
-
         this.context = context;
-        this.names = names;
-        this.images = images;
-        this.descriptions = descriptions;
+        this.parkings = parkings;
     }
 
 
@@ -40,11 +36,11 @@ public class ParkingsAdapter extends ArrayAdapter<String> {
         ImageView drivers_image = rowView.findViewById(R.id.drivers_image);
         TextView drivers_description = rowView.findViewById(R.id.drivers_description);
 
-        drivers_name.setText(names.get(position));
+        drivers_name.setText(parkings.get(position).getName());
         Picasso.get()
-                .load(images[position])
+                .load(parkings.get(position).getImage())
                 .into(drivers_image);
-        drivers_description.setText(descriptions[position]);
+        drivers_description.setText(parkings.get(position).getDescription());
         return rowView;
 
     };
