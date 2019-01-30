@@ -1,6 +1,7 @@
 package com.alas.balet;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -9,11 +10,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.alas.balet.ListAdapters.ParkingsAdapter;
 import com.alas.balet.Objects.Parking;
+import com.alas.balet.Screens.GetParking;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,12 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private Dialog locationDialog;
     List<Parking> parkings = new ArrayList<>();
-    ListView list;
-    String[] name = {"Alejandro","Memo","Eras"};
-    List<String> names = new ArrayList<>();
-    List<String> images = new ArrayList<>();
-    List<String> descriptions = new ArrayList<>();
-    List<Integer> ids = new ArrayList<>();
+    ListView parkingsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,26 +53,41 @@ public class MainActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         DatabaseReference reference = mDatabase.child("Parkings");
 
-//        final ParkingsAdapter adapter=new ParkingsAdapter(MainActivity.this, names, images,descriptions);
-//        list=(ListView)findViewById(R.id.list);
-//        list.setAdapter(adapter);
+        final ParkingsAdapter adapter=new ParkingsAdapter(MainActivity.this, parkings);
+        parkingsList = findViewById(R.id.list);
+        parkingsList.setAdapter(adapter);
 
         ValueEventListener postListener = new ValueEventListener(){
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    boolean flag = false;
 
                     Parking parking = new Parking();
                     parking.setId(Integer.parseInt(postSnapshot.child("id").getValue().toString()));
                     parking.setName(postSnapshot.child("name").getValue().toString());
                     parking.setDescription(postSnapshot.child("description").getValue().toString());
                     parking.setPrice(Integer.parseInt(postSnapshot.child("price").getValue().toString()));
-                    parkings.add(parking);
+                    parking.setImage(postSnapshot.child("image").getValue().toString());
+                    parking.setSpaces(Integer.parseInt(postSnapshot.child("spaces").getValue().toString()));
 
+                    //Update
+                    for(Parking parkingAux:parkings){
+                        if(parkingAux.getId() == parking.getId()){
+                            parkings.remove(parkingAux);
+                            parkings.add(parking);
+                            flag = true;
+                            break;
+                        }
+                    }
 
-                    ParkingsAdapter adapter=new ParkingsAdapter(MainActivity.this, parkings);
-                    list=(ListView)findViewById(R.id.list);
-                    list.setAdapter(adapter);
+                    //Add
+                    if(flag == false){
+                        parkings.add(parking);
+                    }
+
+                    adapter.notifyDataSetChanged();
+
                 }
 
             }
@@ -82,11 +96,23 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
-        reference.addValueEventListener(postListener);//addListenerForSingleValueEvent
-        //names.add("alex");
+        reference.addValueEventListener(postListener);
 
-
-
+        parkingsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Parking parkingAux;
+                String idIntentParameter = String.valueOf(parkings.get(position).getId());
+                for(Parking parking:parkings){
+                    if(parking.getId() == Integer.parseInt(idIntentParameter)){
+                        Intent getParkingIntent = new Intent(MainActivity.this, GetParking.class);
+                        getParkingIntent.putExtra("parking", parking);
+                        startActivity(getParkingIntent);
+                        break;
+                    }
+                }
+            }
+        });
 
 //        locationDialog = new Dialog(this);
 //        locationDialog.setContentView(R.layout.location_dialog);

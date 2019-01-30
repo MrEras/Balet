@@ -35,12 +35,17 @@ public class ParkingsAdapter extends ArrayAdapter<Parking> {
         TextView drivers_name = rowView.findViewById(R.id.drivers_name);
         ImageView drivers_image = rowView.findViewById(R.id.drivers_image);
         TextView drivers_description = rowView.findViewById(R.id.drivers_description);
+        TextView parkingsPrice = rowView.findViewById(R.id.textView6);
+        TextView parkingsSpaces = rowView.findViewById(R.id.textView5);
+
 
         drivers_name.setText(parkings.get(position).getName());
         Picasso.get()
                 .load(parkings.get(position).getImage())
                 .into(drivers_image);
         drivers_description.setText(parkings.get(position).getDescription());
+        parkingsPrice.setText("Precio: "+String.valueOf(parkings.get(position).getPrice()));
+        parkingsSpaces.setText("Lugares disponibles: "+String.valueOf(parkings.get(position).getSpaces()));
         return rowView;
 
     };

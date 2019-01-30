@@ -1,11 +1,14 @@
 package com.alas.balet.Objects;
 
-public class Parking {
+import java.io.Serializable;
+
+public class Parking  implements Serializable {
     private int id;
     private String name;
     private String description;
     private String image;
     private int price;
+    private int spaces;
 
     public Parking(){
 
@@ -49,5 +52,13 @@ public class Parking {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getSpaces() {
+        return spaces;
+    }
+
+    public void setSpaces(int spaces) {
+        this.spaces = spaces;
     }
 }
