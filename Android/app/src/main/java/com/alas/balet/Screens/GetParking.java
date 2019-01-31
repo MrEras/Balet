@@ -1,11 +1,13 @@
 package com.alas.balet.Screens;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.internal.ParcelableSparseArray;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,8 +40,20 @@ public class GetParking extends AppCompatActivity {
         Picasso.get().load(parking.getImage()).into(parkingImage);
         parkingName.setText(parking.getName());
         parkingDescription.setText(parking.getDescription());
-        parkingPrice.setText("Precio: "+parking.getPrice());
-        parkingPlaces.setText("Lugares: "+parking.getName());
+        parkingPrice.setText("Precio: $"+parking.getPrice()+".00");
+        parkingPlaces.setText("Lugares: "+parking.getSpaces()+" disponibles");
+
+        final String latitude = parking.getLatitude();
+        final String longitude = parking.getLongitude();
+        final String name = parking.getName();
+
+        parkingImage.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:<"+latitude+">,<"+longitude+">?q=<"+latitude+">,<"+longitude+">("+name+")"));
+                startActivity(intent);
+            }
+        });
+
 
 
     }

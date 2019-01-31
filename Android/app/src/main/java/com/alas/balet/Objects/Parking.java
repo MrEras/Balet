@@ -7,6 +7,8 @@ public class Parking  implements Serializable {
     private String name;
     private String description;
     private String image;
+    private String latitude;
+    private String longitude;
     private int price;
     private int spaces;
 
@@ -60,5 +62,21 @@ public class Parking  implements Serializable {
 
     public void setSpaces(int spaces) {
         this.spaces = spaces;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 }

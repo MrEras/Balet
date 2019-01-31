@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
                     parking.setPrice(Integer.parseInt(postSnapshot.child("price").getValue().toString()));
                     parking.setImage(postSnapshot.child("image").getValue().toString());
                     parking.setSpaces(Integer.parseInt(postSnapshot.child("spaces").getValue().toString()));
+                    parking.setLatitude(postSnapshot.child("latitude").getValue().toString());
+                    parking.setLongitude(postSnapshot.child("longitude").getValue().toString());
 
                     //Update
                     for(Parking parkingAux:parkings){
