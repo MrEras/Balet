@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		17B86C363E1E5CA6D29C8C97 /* Pods_Balet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079646C4C0E1FFAC24597AA6 /* Pods_Balet.framework */; };
+		CC8BECC6220135E00023440F /* LogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8BECC5220135E00023440F /* LogVC.swift */; };
 		CC96EAA621FE7F0100E8DF75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC96EAA521FE7F0100E8DF75 /* GoogleService-Info.plist */; };
 		CC9E6EC221B055C70079C775 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9E6EC121B055C70079C775 /* AppDelegate.swift */; };
 		CC9E6EC421B055C70079C775 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9E6EC321B055C70079C775 /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		079646C4C0E1FFAC24597AA6 /* Pods_Balet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Balet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D2C4F46AB454047169EC813 /* Pods-Balet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Balet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Balet/Pods-Balet.debug.xcconfig"; sourceTree = "<group>"; };
+		CC8BECC5220135E00023440F /* LogVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogVC.swift; sourceTree = "<group>"; };
 		CC96EAA521FE7F0100E8DF75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CC9E6EBE21B055C70079C775 /* Balet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Balet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC9E6EC121B055C70079C775 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				CC9E6EC321B055C70079C775 /* ViewController.swift */,
+				CC8BECC5220135E00023440F /* LogVC.swift */,
 				CCFF257421F687620033636B /* DetailVC.swift */,
 				CCB9501D21B9E517004DC046 /* SideMenuViewController.swift */,
 			);
@@ -264,6 +267,7 @@
 			files = (
 				CCFF257121F65AAF0033636B /* Extensions.swift in Sources */,
 				CC9E6EC421B055C70079C775 /* ViewController.swift in Sources */,
+				CC8BECC6220135E00023440F /* LogVC.swift in Sources */,
 				CC9E6EC221B055C70079C775 /* AppDelegate.swift in Sources */,
 				CCB9501E21B9E517004DC046 /* SideMenuViewController.swift in Sources */,
 				CCFF257321F66E7B0033636B /* Parking.swift in Sources */,
@@ -418,7 +422,10 @@
 				DEVELOPMENT_TEAM = 8B83SN98VT;
 				INFOPLIST_FILE = Balet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = mx.com.memoromoj.Balet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -435,7 +442,10 @@
 				DEVELOPMENT_TEAM = 8B83SN98VT;
 				INFOPLIST_FILE = Balet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = mx.com.memoromoj.Balet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
