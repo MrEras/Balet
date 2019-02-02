@@ -23,6 +23,12 @@
         <activity android:name=".Screens.GetParking">
 
         </activity>
+        <activity android:name=".Screens.SignUp">
+
+        </activity>
+        <activity android:name=".Screens.SendCode">
+
+        </activity>
     </application>
 
 </manifest>

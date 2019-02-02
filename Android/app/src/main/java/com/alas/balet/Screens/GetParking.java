@@ -3,16 +3,14 @@ package com.alas.balet.Screens;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.internal.ParcelableSparseArray;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.alas.balet.MainActivity;
 import com.alas.balet.Objects.Parking;
 import com.alas.balet.R;
 import com.squareup.picasso.Picasso;
@@ -36,6 +34,7 @@ public class GetParking extends AppCompatActivity {
         TextView parkingDescription = findViewById(R.id.parkingDescription);
         TextView parkingPrice = findViewById(R.id.parkingPrice);
         TextView parkingPlaces = findViewById(R.id.parkingPlaces);
+        Button btnBook = findViewById(R.id.button);
 
         Picasso.get().load(parking.getImage()).into(parkingImage);
         parkingName.setText(parking.getName());
@@ -54,8 +53,6 @@ public class GetParking extends AppCompatActivity {
             }
         });
 
-
-
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -66,5 +63,10 @@ public class GetParking extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void onClickBtn(View v)
+    {
+        Intent getParkingIntent = new Intent(GetParking.this, SignUp.class);
+        startActivity(getParkingIntent);
     }
 }
