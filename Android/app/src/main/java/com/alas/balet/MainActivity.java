@@ -13,11 +13,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alas.balet.ListAdapters.ParkingsAdapter;
 import com.alas.balet.Objects.Parking;
+import com.alas.balet.Objects.User;
 import com.alas.balet.Screens.GetParking;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        navigationView = findViewById(R.id.nv);
+        View headerView = navigationView.getHeaderView(0);
         drawerLayout = findViewById(R.id.activity_main);
         toggleBar = new ActionBarDrawerToggle(this, drawerLayout,R.string.Open, R.string.Close);
         drawerLayout.addDrawerListener(toggleBar);
@@ -50,8 +57,34 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.nav_bar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        final TextView userName = headerView.findViewById(R.id.textView);
+        TextView userPhone = headerView.findViewById(R.id.txtPhone);
+
+        if(FirebaseAuth.getInstance().getCurrentUser() != null){
+            final String phone = FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
+            System.out.println(phone);
+            userPhone.setText(phone);
+            mDatabase.child("Users").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                        if(phone.equals(postSnapshot.child("phone").getValue().toString())){
+                            userName.setText(postSnapshot.child("name").getValue().toString());
+                        }
+                    }
+
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            });
+
+        }
+
+
+
         DatabaseReference reference = mDatabase.child("Parkings");
+
 
         final ParkingsAdapter adapter=new ParkingsAdapter(MainActivity.this, parkings);
         parkingsList = findViewById(R.id.list);
@@ -130,7 +163,6 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         //Navigation and side menu
-        navigationView = findViewById(R.id.nv);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -150,7 +182,8 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Historial",Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.legal:
-                        Toast.makeText(MainActivity.this, "Legal",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Logout",Toast.LENGTH_SHORT).show();
+                        FirebaseAuth.getInstance().signOut();
                         break;
                     default:
                         return true;

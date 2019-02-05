@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.alas.balet.Objects.Parking;
 import com.alas.balet.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 public class GetParking extends AppCompatActivity {
@@ -46,6 +47,9 @@ public class GetParking extends AppCompatActivity {
         final String longitude = parking.getLongitude();
         final String name = parking.getName();
 
+
+        System.out.println(FirebaseAuth.getInstance().getCurrentUser());
+
         parkingImage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:<"+latitude+">,<"+longitude+">?q=<"+latitude+">,<"+longitude+">("+name+")"));
@@ -66,7 +70,15 @@ public class GetParking extends AppCompatActivity {
     }
     public void onClickBtn(View v)
     {
-        Intent getParkingIntent = new Intent(GetParking.this, SignUp.class);
-        startActivity(getParkingIntent);
+        //Register
+        if(FirebaseAuth.getInstance().getCurrentUser() == null){
+            Intent getParkingIntent = new Intent(GetParking.this, SignUp.class);
+            startActivity(getParkingIntent);
+        }
+        else{
+            Intent getParkingIntent = new Intent(GetParking.this, SelectPayment.class);
+            startActivity(getParkingIntent);
+        }
+
     }
 }

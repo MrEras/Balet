@@ -29,6 +29,9 @@
         <activity android:name=".Screens.SendCode">
 
         </activity>
+        <activity android:name=".Screens.SelectPayment">
+
+        </activity>
     </application>
 
 </manifest>

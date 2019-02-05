@@ -6,11 +6,14 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alas.balet.MainActivity;
+import com.alas.balet.Objects.Parking;
+import com.alas.balet.Objects.User;
 import com.alas.balet.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,6 +24,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
 
@@ -30,6 +35,9 @@ public class SendCode extends AppCompatActivity {
     private EditText editTextCode;
     //firebase auth object
     private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+    User user = new User();
+    String mobile = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +56,14 @@ public class SendCode extends AppCompatActivity {
         editTextCode = findViewById(R.id.editText4);
 
         Intent intent = getIntent();
-        String mobile = intent.getStringExtra("mobile");
-        System.out.println(mobile);
+        user = (User) intent.getSerializableExtra("user");
+        System.out.println(user.getPhone());
+        mobile = user.getPhone();
         sendVerificationCode(mobile);
 
     }
 
-    public void sendCode(){
+    public void sendCode(View v){
         String code = editTextCode.getText().toString().trim();
         if (code.isEmpty() || code.length() < 6) {
             editTextCode.setError("Enter valid code");
@@ -115,8 +124,10 @@ public class SendCode extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(SendCode.this, "wevon", Toast.LENGTH_LONG).show();
+                            Toast.makeText(SendCode.this, "succesful", Toast.LENGTH_LONG).show();
                             //verification successful we will start the profile activity
+                            mDatabase = FirebaseDatabase.getInstance().getReference();
+                            mDatabase.child("Users").child(mobile).setValue(user);
                             Intent intent = new Intent(SendCode.this, MainActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);

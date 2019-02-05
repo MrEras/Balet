@@ -15,6 +15,6 @@
         android:title="Historial"/>
     <item android:id="@+id/legal"
         android:icon="@drawable/baseline_work_24"
-        android:title="Legal"/>
+        android:title="Cerrar Sesion"/>
 
 </menu>

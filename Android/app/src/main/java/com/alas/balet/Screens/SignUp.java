@@ -9,10 +9,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.alas.balet.MainActivity;
+import com.alas.balet.Objects.User;
 import com.alas.balet.R;
 
 public class SignUp extends AppCompatActivity {
+    User user = new User();
     EditText phoneEditText;
+    EditText nameEditText;
+    EditText passwordEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +32,8 @@ public class SignUp extends AppCompatActivity {
         barName.setText("Registro");
 
         phoneEditText = findViewById(R.id.editText);
-
+        nameEditText = findViewById(R.id.editText2);
+        passwordEditText = findViewById(R.id.editText3);
 
     }
 
@@ -41,8 +47,12 @@ public class SignUp extends AppCompatActivity {
             return;
         }
 
+        user.setPhone(phoneEditText.getText().toString().trim());
+        user.setName(nameEditText.getText().toString().trim());
+        user.setPassword(passwordEditText.getText().toString().trim());
+
         Intent intent = new Intent(SignUp.this, SendCode.class);
-        intent.putExtra("mobile", mobile);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
