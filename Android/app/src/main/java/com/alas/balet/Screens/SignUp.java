@@ -17,7 +17,6 @@ public class SignUp extends AppCompatActivity {
     User user = new User();
     EditText phoneEditText;
     EditText nameEditText;
-    EditText passwordEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +32,6 @@ public class SignUp extends AppCompatActivity {
 
         phoneEditText = findViewById(R.id.editText);
         nameEditText = findViewById(R.id.editText2);
-        passwordEditText = findViewById(R.id.editText3);
 
     }
 
@@ -49,10 +47,14 @@ public class SignUp extends AppCompatActivity {
 
         user.setPhone(phoneEditText.getText().toString().trim());
         user.setName(nameEditText.getText().toString().trim());
-        user.setPassword(passwordEditText.getText().toString().trim());
 
         Intent intent = new Intent(SignUp.this, SendCode.class);
         intent.putExtra("user", user);
+        startActivity(intent);
+    }
+    public void sendToPayment(View v)
+    {
+        Intent intent = new Intent(SignUp.this, SelectPayment.class);
         startActivity(intent);
     }
 

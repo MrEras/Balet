@@ -128,7 +128,7 @@ public class SendCode extends AppCompatActivity {
                             //verification successful we will start the profile activity
                             mDatabase = FirebaseDatabase.getInstance().getReference();
                             mDatabase.child("Users").child(mobile).setValue(user);
-                            Intent intent = new Intent(SendCode.this, MainActivity.class);
+                            Intent intent = new Intent(SendCode.this, SelectPayment.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
 
